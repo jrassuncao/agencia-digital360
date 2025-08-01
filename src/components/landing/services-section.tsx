@@ -13,7 +13,7 @@ import socialMediaImage from "@/assets/social-media.jpg"
 const services = [
   {
     title: "🌐 Desenvolvimento de Sites Estratégicos",
-    description: "Seu site precisa ir além do visual: ele deve vender, comunicar e posicionar sua marca. Criamos sites institucionais, landing pages e lojas virtuais com design impactante, projetados para atender tanto a demanda de microempresas quanto a de empresas com vasta experiência.",
+    description: "Desenvolvemos sites que não só impressionam visualmente, mas que também vendem, comunicam e fortalecem sua marca — de microempresas a grandes negócios.",
     features: [
       "Design impactante e responsivo",
       "UX/UI de alta performance",
@@ -113,7 +113,6 @@ export function ServicesSection() {
     };
   }, []);
 
-  // ✅ 1. Função para abrir o link do WhatsApp
   const handleWhatsAppClick = () => {
     const url = "https://api.whatsapp.com/send/?phone=5521965611980&text=Gostaria+de+uma+cota%C3%A7%C3%A3o+e+tirar+d%C3%BAvidas.&type=phone_number&app_absent=0";
     window.open(url, '_blank');
@@ -142,14 +141,14 @@ export function ServicesSection() {
               description={service.description}
               features={service.features}
               image={service.image}
-              className="animate-float"
-              style={{ animationDelay: `${index * 0.5}s` }}
+              // ✅ EFEITO DE MOVIMENTO REMOVIDO
+              // className="animate-float"
+              // style={{ animationDelay: `${index * 0.5}s` }}
             />
           ))}
         </div>
 
         <div className="text-center">
-          {/* ✅ 2. Adicionado o 'onClick' ao botão */}
           <Button 
             variant="hero" 
             size="xl" 
