@@ -12,7 +12,7 @@ import socialMediaImage from "@/assets/social-media.jpg"
 
 const services = [
   {
-    title: "🌐 Desenvolvimento de Sites Estratégicos",
+    title: "Desenvolvimento de Sites Estratégicos",
     description: "Desenvolvemos sites que não só impressionam visualmente, mas que também vendem, comunicam e fortalecem sua marca — de microempresas a grandes negócios.",
     features: [
       "Design impactante e responsivo",
@@ -24,7 +24,7 @@ const services = [
     image: webDevImage
   },
   {
-    title: "📊 Sistemas & Dashboards Personalizados",
+    title: "Sistemas & Dashboards Personalizados",
     description: "Automatize. Controle. Cresça. Desenvolvemos painéis inteligentes, sistemas sob medida e ferramentas que resolvem problemas específicos do seu negócio.",
     features: [
       "Painéis inteligentes e intuitivos",
@@ -36,7 +36,7 @@ const services = [
     image: dashboardImage
   },
   {
-    title: "📍 Otimização do Google Meu Negócio",
+    title: "Otimização do Google Meu Negócio",
     description: "Sua empresa no topo das buscas locais — onde seus clientes estão. Otimizamos seu perfil com fotos profissionais, informações estratégicas e gestão de avaliações.",
     features: [
       "Otimização completa do perfil",
@@ -48,7 +48,7 @@ const services = [
     image: googleBusinessImage
   },
   {
-    title: "🎥 Criação de Vídeos Publicitários",
+    title: "Criação de Vídeos Publicitários",
     description: "Sua mensagem em movimento — impacte, envolva e venda mais. Criamos vídeos publicitários estratégicos com roteiro, captação e edição profissional.",
     features: [
       "Vídeos institucionais e comerciais",
@@ -60,7 +60,7 @@ const services = [
     image: videoProductionImage
   },
   {
-    title: "🚀 SEO de Performance: Sua Marca no Topo do Google",
+    title: "SEO de Performance: Sua Marca no Topo do Google",
     description: "Ser encontrado é o primeiro passo para vender. Posicionamos sua empresa de forma estratégica no Google, atraindo clientes qualificados que estão ativamente buscando por suas soluções. Não se trata apenas de tráfego, mas de gerar oportunidades reais de negócio.",
     features: [
       "Análise completa de palavras-chave",
@@ -72,7 +72,7 @@ const services = [
     image: seoImage
   },
   {
-    title: "📱 Gestão de Redes Sociais: Conexões que Geram Resultados",
+    title: "Gestão de Redes Sociais: Conexões que Geram Resultados",
     description: "Transformamos suas redes sociais em canais de relacionamento e vendas. Mais do que posts, criamos conversas estratégicas, construindo uma comunidade engajada em torno da sua marca com conteúdo relevante e design profissional.",
     features: [
       "Planejamento de conteúdo estratégico",
@@ -118,12 +118,20 @@ export function ServicesSection() {
     window.open(url, '_blank');
   };
 
+  // ✅ 1. Definimos os estilos da animação aqui, com os mesmos parâmetros da AboutSection
+  const textAnimationStyle = {
+    transition: 'transform 4s cubic-bezier(0.25, 1, 0.5, 1), opacity 2.5s ease-out',
+    transform: isVisible ? 'translateY(0)' : 'translateY(100px)',
+    opacity: isVisible ? 1 : 0,
+  };
+
   return (
     <Section id="servicos" ref={sectionRef} className="bg-gradient-card relative overflow-hidden">
       <InteractiveBackground className="opacity-20" />
       <div className="relative z-10">
         
-        <div className={`text-center space-y-6 mb-16 transition-all duration-[1500ms] ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
+        {/* ✅ 2. Aplicamos os estilos inline e removemos as classes de animação */}
+        <div style={textAnimationStyle} className="text-center space-y-6 mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
             <span className="gradient-text">Soluções 360</span>
           </h2>
@@ -141,9 +149,6 @@ export function ServicesSection() {
               description={service.description}
               features={service.features}
               image={service.image}
-              // ✅ EFEITO DE MOVIMENTO REMOVIDO
-              // className="animate-float"
-              // style={{ animationDelay: `${index * 0.5}s` }}
             />
           ))}
         </div>

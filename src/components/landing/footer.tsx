@@ -1,4 +1,5 @@
-import { Section } from "@/components/ui/section"
+import { Section } from "@/components/ui/section";
+import logo360 from "@/assets/logo-360.png";
 
 export function Footer() {
   return (
@@ -8,10 +9,11 @@ export function Footer() {
           {/* Logo and description */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-hero flex items-center justify-center">
-                <span className="text-xl font-bold text-white">360</span>
-              </div>
-              <span className="text-xl font-bold gradient-text">Agência 360</span>
+              <img 
+                src={logo360} 
+                alt="Logo Agência 360" 
+                className="w-40 h-auto rounded-lg" 
+              />
             </div>
             <p className="text-muted-foreground">
               Soluções digitais inteligentes para empresas que querem crescer de verdade.
@@ -34,6 +36,7 @@ export function Footer() {
             <h4 className="font-semibold text-foreground">Contato</h4>
             <div className="space-y-2 text-muted-foreground">
               <p>📧 contato@agencia360.com</p>
+              <p>📞 +55 21 96561-1980</p>
               <p>📍 Rio de Janeiro, RJ</p>
             </div>
           </div>
@@ -44,5 +47,5 @@ export function Footer() {
         </div>
       </Section>
     </footer>
-  )
+  );
 }

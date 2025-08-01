@@ -4,47 +4,45 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { BrainCircuit, FileText, Palette, Code, CheckCircle, Rocket } from "lucide-react";
 
-// ✅ Variação de Cores v6: Sequência única e equilibrada
 const roadmapSteps = [
   {
     number: <span className="roadmap-card-number" style={{ color: '#6A5ACD', background: 'rgba(106, 90, 205, 0.1)', borderColor: 'rgba(106, 90, 205, 0.4)' }}>01</span>,
     title: "Conversa Estratégica",
     description: "Conhecemos seu negócio, objetivos e desafios. Definimos juntos a melhor estratégia digital para alcançar seus resultados.",
-    icon: <BrainCircuit size={40} className="roadmap-card-icon" style={{ color: '#40E0D0' }} /> // Turquoise
+    icon: <BrainCircuit size={40} className="roadmap-card-icon" style={{ color: '#40E0D0' }} />
   },
   {
     number: <span className="roadmap-card-number" style={{ color: '#9370DB', background: 'rgba(147, 112, 219, 0.1)', borderColor: 'rgba(147, 112, 219, 0.4)' }}>02</span>,
     title: "Proposta & Contrato",
     description: "Apresentamos uma proposta personalizada com cronograma, investimento e entregáveis. Tudo transparente e sem surpresas.",
-    icon: <FileText size={40} className="roadmap-card-icon" style={{ color: '#7FFFD4' }} /> // Aquamarine
+    icon: <FileText size={40} className="roadmap-card-icon" style={{ color: '#7FFFD4' }} />
   },
   {
     number: <span className="roadmap-card-number" style={{ color: '#8A2BE2', background: 'rgba(138, 43, 226, 0.1)', borderColor: 'rgba(138, 43, 226, 0.4)' }}>03</span>,
     title: "Design & Planejamento",
     description: "Criamos o design visual, estrutura de conteúdo e arquitetura da informação alinhados à identidade da sua marca.",
-    icon: <Palette size={40} className="roadmap-card-icon" style={{ color: '#48D1CC' }} /> // MediumTurquoise
+    icon: <Palette size={40} className="roadmap-card-icon" style={{ color: '#48D1CC' }} />
   },
   {
     number: <span className="roadmap-card-number" style={{ color: '#9932CC', background: 'rgba(153, 50, 204, 0.1)', borderColor: 'rgba(153, 50, 204, 0.4)' }}>04</span>,
     title: "Desenvolvimento",
     description: "Colocamos a mão na massa! Desenvolvemos seu projeto com as melhores tecnologias e práticas do mercado.",
-    icon: <Code size={40} className="roadmap-card-icon" style={{ color: '#DDA0DD' }} /> // Plum
+    icon: <Code size={40} className="roadmap-card-icon" style={{ color: '#DDA0DD' }} />
   },
   {
     number: <span className="roadmap-card-number" style={{ color: '#8B008B', background: 'rgba(139, 0, 139, 0.1)', borderColor: 'rgba(139, 0, 139, 0.4)' }}>05</span>,
     title: "Revisão & Aprovação",
     description: "Apresentamos o resultado final, coletamos seu feedback e fazemos os ajustes necessários até a aprovação total.",
-    icon: <CheckCircle size={40} className="roadmap-card-icon" style={{ color: '#FF00FF' }} /> // Fuchsia
+    icon: <CheckCircle size={40} className="roadmap-card-icon" style={{ color: '#FF00FF' }} />
   },
   {
     number: <span className="roadmap-card-number" style={{ color: '#9400D3', background: 'rgba(148, 0, 211, 0.1)', borderColor: 'rgba(148, 0, 211, 0.4)' }}>06</span>,
     title: "Lançamento & Suporte",
     description: "Publicamos seu projeto e fornecemos todo o suporte técnico. Seu sucesso digital começa aqui!",
-    icon: <Rocket size={40} className="roadmap-card-icon" style={{ color: '#4B0082' }} /> // Indigo
+    icon: <Rocket size={40} className="roadmap-card-icon" style={{ color: '#4B0082' }} />
   }
 ];
 
-// Componente para o Card individual
 function RoadmapCard({ number, title, description, icon }: { number: React.ReactNode, title: string, description: string, icon: React.ReactNode }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -79,7 +77,6 @@ function RoadmapCard({ number, title, description, icon }: { number: React.React
   );
 }
 
-// Lógica para o efeito de estrelas
 interface Star {
   id: number;
   size: number;
@@ -89,9 +86,10 @@ interface Star {
   top: string;
 }
 
-// Componente principal da Secção
 export function RoadmapSection() {
   const [stars, setStars] = useState<Star[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const generatedStars: Star[] = [];
@@ -107,6 +105,28 @@ export function RoadmapSection() {
       });
     }
     setStars(generatedStars);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          if (sectionRef.current) {
+            observer.unobserve(sectionRef.current);
+          }
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   const handleWhatsAppClick = () => {
@@ -114,9 +134,16 @@ export function RoadmapSection() {
     window.open(url, '_blank');
   };
 
+  // ✅ 1. Replicando exatamente o efeito do ServicesSection
+  const textAnimationStyle = {
+    transition: 'transform 4s cubic-bezier(0.25, 1, 0.5, 1), opacity 2.5s ease-out',
+    transform: isVisible ? 'translateY(0)' : 'translateY(100px)',
+    opacity: isVisible ? 1 : 0,
+  };
+
   return (
-    <Section id="processo" className="relative overflow-hidden">
-      {/* Contentor para o Fundo de Estrelas */}
+    <Section id="processo" ref={sectionRef} className="relative overflow-hidden">
+      {/* Fundo de Estrelas */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {stars.map((star) => (
           <div
@@ -133,10 +160,11 @@ export function RoadmapSection() {
           />
         ))}
       </div>
-      
-      {/* Conteúdo da Secção */}
+
+      {/* Conteúdo */}
       <div className="relative z-10">
-        <div className="text-center space-y-6 mb-16">
+        {/* ✅ 2. Aplicamos o estilo inline com o mesmo efeito do ServicesSection */}
+        <div style={textAnimationStyle} className="text-center space-y-6 mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
             <span className="gradient-text">Nossa Jornada</span>
           </h2>
