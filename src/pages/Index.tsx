@@ -12,22 +12,26 @@ import { ContactSection } from "@/components/landing/ContactSection";
 
 const Index = () => {
   return (
-    // ✅ Classe 'overflow-x-hidden' movida para aqui
-    <div className="min-h-screen overflow-x-hidden">
+    // Usamos um React Fragment <> para não adicionar divs desnecessários
+    <>
       <Header />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <RoadmapSection />
-        <SectionDivider />
-        <FAQSection />
-        <ContactSection />
-        <CTASection />
-      </main>
-      <Footer />
+      {/* ✅ Este 'div' agora contém todo o conteúdo que rola,
+          resolvendo o problema do scroll horizontal sem afetar o Header. */}
+      <div className="overflow-x-hidden">
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ServicesSection />
+          <RoadmapSection />
+          <SectionDivider />
+          <FAQSection />
+          <ContactSection />
+          <CTASection />
+        </main>
+        <Footer />
+      </div>
       <WhatsAppButton />
-    </div>
+    </>
   );
 };
 
