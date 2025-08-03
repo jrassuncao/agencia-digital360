@@ -8,7 +8,7 @@ import { FAQSection } from "@/components/landing/faq-section";
 import { CTASection } from "@/components/landing/cta-section";
 import { Footer } from "@/components/landing/footer";
 import { SectionDivider } from "@/components/ui/SectionDivider";
-import { ContactSection } from "@/components/landing/ContactSection"; // ✅ Importamos a nova secção
+import { ContactSection } from "@/components/landing/ContactSection"; // ✅ Importação da ContactSection
 
 const Index = () => {
   return (
@@ -21,9 +21,8 @@ const Index = () => {
         <RoadmapSection />
         <SectionDivider />
         <FAQSection />
+        <ContactSection /> {/* ✅ Secção de Contacto restaurada no sítio correto */}
         <CTASection />
-        <ContactSection /> {/* ✅ Adicionamos a nova secção aqui */}
-        
       </main>
       <Footer />
       <WhatsAppButton />
