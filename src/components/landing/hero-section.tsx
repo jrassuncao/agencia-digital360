@@ -8,7 +8,7 @@ import heroImage from "@/assets/hero-bg.jpg"
 
 const phrasesToType = [
   'resultado',
-  'transformação',
+  'impacto',
 ];
 
 export function HeroSection() {
