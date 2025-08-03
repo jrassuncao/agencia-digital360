@@ -8,11 +8,12 @@ import { FAQSection } from "@/components/landing/faq-section";
 import { CTASection } from "@/components/landing/cta-section";
 import { Footer } from "@/components/landing/footer";
 import { SectionDivider } from "@/components/ui/SectionDivider";
-import { ContactSection } from "@/components/landing/ContactSection"; // ✅ Importação da ContactSection
+import { ContactSection } from "@/components/landing/ContactSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    // ✅ Classe 'overflow-x-hidden' movida para aqui
+    <div className="min-h-screen overflow-x-hidden">
       <Header />
       <main>
         <HeroSection />
@@ -21,7 +22,7 @@ const Index = () => {
         <RoadmapSection />
         <SectionDivider />
         <FAQSection />
-        <ContactSection /> {/* ✅ Secção de Contacto restaurada no sítio correto */}
+        <ContactSection />
         <CTASection />
       </main>
       <Footer />
