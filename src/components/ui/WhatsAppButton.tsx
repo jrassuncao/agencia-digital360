@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { FaWhatsapp } from "react-icons/fa"; // Importa o ícone correto do WhatsApp
+import { FaWhatsapp } from "react-icons/fa"; // Importa o ícone do WhatsApp
 
 export function WhatsAppButton() {
   const handleWhatsAppClick = () => {
@@ -13,7 +13,6 @@ export function WhatsAppButton() {
       className="whatsapp-fab"
       aria-label="Falar no WhatsApp"
     >
-      {/* ✅ Removemos o 'size' e adicionamos uma className */}
       <FaWhatsapp className="whatsapp-icon" />
     </Button>
   );
