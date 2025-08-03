@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Section } from "@/components/ui/section"
 import { ServiceCard } from "@/components/ui/service-card"
-import { Button } from "@/components/ui/button"
+
 import { InteractiveBackground } from "@/components/effects/interactive-background"
 import webDevImage from "@/assets/web-development.jpg"
 import dashboardImage from "@/assets/dashboard-systems.jpg"
@@ -13,7 +13,7 @@ import socialMediaImage from "@/assets/social-media.jpg"
 const services = [
   {
     title: "Desenvolvimento de Sites Estratégicos",
-    description: "Desenvolvemos sites que não só impressionam visualmente, mas que também vendem, comunicam e fortalecem sua marca — de microempresas a grandes negócios.",
+    description: "Criamos sites que impressionam visualmente e vendem, comunicando e fortalecendo sua marca, de microempresas a grandes negócios.",
     features: [
       "Design impactante e responsivo",
       "UX/UI de alta performance",
@@ -49,7 +49,7 @@ const services = [
   },
   {
     title: "Criação de Vídeos Publicitários",
-    description: "Sua mensagem em movimento — impacte, envolva e venda mais. Criamos vídeos publicitários estratégicos com roteiro, captação e edição profissional.",
+    description: "Sua mensagem em movimento: impacte, envolva e venda mais. Produzimos vídeos publicitários estratégicos com roteiro, captação e edição profissional.",
     features: [
       "Vídeos institucionais e comerciais",
       "Roteiro estratégico",
@@ -154,14 +154,7 @@ export function ServicesSection() {
         </div>
 
         <div className="text-center">
-          <Button 
-            variant="hero" 
-            size="xl" 
-            className="glow-primary"
-            onClick={handleWhatsAppClick}
-          >
-            👉 Transforme seu digital em resultados reais
-          </Button>
+ 
         </div>
       </div>
     </Section>

@@ -1,5 +1,4 @@
 import { Section } from "@/components/ui/section"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 const faqs = [
   {
@@ -37,22 +36,23 @@ export function FAQSection() {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-4">
+        {/* ✅ Estrutura do Accordion substituída por divs simples */}
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem
+            <div
               key={index}
-              value={`item-${index}`}
-              className="border border-border/50 rounded-lg px-6 bg-gradient-card hover:border-primary/30 transition-colors"
+              className="border border-border/50 rounded-lg p-6 bg-gradient-card"
             >
-              <AccordionTrigger className="text-left font-semibold text-lg hover:text-primary transition-colors py-6">
+              {/* ✅ Cor da fonte da pergunta alterada */}
+              <h3 className="text-left font-semibold text-lg text-foreground">
                 {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
+              </h3>
+              <p className="text-muted-foreground mt-4 text-base leading-relaxed">
                 {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
+              </p>
+            </div>
           ))}
-        </Accordion>
+        </div>
       </div>
     </Section>
   )

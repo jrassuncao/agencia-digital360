@@ -327,3 +327,53 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: hsl(var(--primary)); /* Cor primária com 100% de opacidade */
 }
+/* ============================================== */
+/* Estilos para o Botão Flutuante do WhatsApp   */
+/* ============================================== */
+
+.whatsapp-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  /* ✅ Tamanho do botão ajustado */
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px hsl(var(--primary) / 0.4);
+  z-index: 100;
+  transition: all 0.3s ease;
+  animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-fab:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 15px 30px hsl(var(--primary) / 0.5);
+}
+
+@keyframes pulse-whatsapp {
+  0% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.7);
+  }
+  70% {
+    /* Efeito de pulsar mais expansivo */
+    box-shadow: 0 0 0 25px hsl(var(--primary) / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+  }
+}
+
+/* ============================================== */
+/* Estilos para o Ícone do Botão de WhatsApp    */
+/* ============================================== */
+
+/* Seletor mais específico para garantir que o estilo seja aplicado */
+.whatsapp-fab .whatsapp-icon {
+  width: 34px;
+  height: 34px;
+}

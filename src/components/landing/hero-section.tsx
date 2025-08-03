@@ -7,8 +7,8 @@ import heroImage from "@/assets/hero-bg.jpg"
 // --- Lógica para o Efeito de Máquina de Escrever ---
 
 const phrasesToType = [
-  'performance de verdade',
-  'marcas inesquecíveis',
+  'resultado',
+  'transformação',
 ];
 
 export function HeroSection() {
@@ -44,14 +44,6 @@ export function HeroSection() {
     window.open(url, '_blank');
   };
 
-  // ✅ 1. Adicionamos a mesma função de scroll que funciona no seu Header
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
     <Section className="relative min-h-screen flex items-center justify-center overflow-hidden" container={false}>
       {/* Todo o seu código de background foi mantido intacto */}
@@ -81,7 +73,7 @@ export function HeroSection() {
           </h1>
           
           <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Na Agência Digital 360, entregamos s solução completa para empresas que querem crescer com consistência e inteligência.
+            Na Agência Digital 360, entregamos a solução completa para empresas que querem crescer com consistência e inteligência.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
             
@@ -91,17 +83,11 @@ export function HeroSection() {
               className="animate-pulse-slow"
               onClick={handleWhatsAppClick}
             >
-              🚀 Comece agora sua revolução digital
+             Comece agora sua revolução digital
             </Button>
             
-            {/* ✅ 2. Adicionado o 'onClick' ao botão */}
-            <Button 
-              variant="outline" 
-              size="xl"
-              onClick={() => scrollToSection('servicos')}
-            >
-              Conhecer nossos serviços
-            </Button>
+            {/* ✅ O botão "Conhecer nossos serviços" foi removido */}
+
           </div>
           <div className="pt-8">
             <p className="text-sm text-muted-foreground">
