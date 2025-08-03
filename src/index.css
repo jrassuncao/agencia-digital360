@@ -335,7 +335,6 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  /* ✅ Tamanho do botão ajustado */
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -360,8 +359,8 @@
     box-shadow: 0 0 0 0 hsl(var(--primary) / 0.7);
   }
   70% {
-    /* Efeito de pulsar mais expansivo */
-    box-shadow: 0 0 0 25px hsl(var(--primary) / 0);
+    /* ✅ Efeito de pulsar menos expansivo */
+    box-shadow: 0 0 0 12px hsl(var(--primary) / 0);
   }
   100% {
     box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
@@ -372,7 +371,6 @@
 /* Estilos para o Ícone do Botão de WhatsApp    */
 /* ============================================== */
 
-/* Seletor mais específico para garantir que o estilo seja aplicado */
 .whatsapp-fab .whatsapp-icon {
   width: 34px;
   height: 34px;
