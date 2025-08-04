@@ -7,8 +7,8 @@ import heroImage from "@/assets/hero-bg.jpg"
 // --- Lógica para o Efeito de Máquina de Escrever ---
 
 const phrasesToType = [
-  'resultado',
-  'impacto real',
+    'impacto real',
+    'poder digital',
 ];
 
 export function HeroSection() {
