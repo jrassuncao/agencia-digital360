@@ -81,11 +81,13 @@ export function Header() {
       {/* ✅ Menu Mobile de Ecrã Inteiro */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 top-16 bg-background z-40 flex flex-col items-center justify-center space-y-8">
-          <button onClick={() => scrollToSection('sobre')} className="text-2xl text-foreground hover:text-primary transition-colors">Sobre</button>
-          <button onClick={() => scrollToSection('servicos')} className="text-2xl text-foreground hover:text-primary transition-colors">Serviços</button>
-          <button onClick={() => scrollToSection('faq')} className="text-2xl text-foreground hover:text-primary transition-colors">FAQ</button>
+          {/* ✅ Tamanho da fonte diminuído de 'text-2xl' para 'text-xl' */}
+          <button onClick={() => scrollToSection('sobre')} className="text-xl text-foreground hover:text-primary transition-colors">Sobre</button>
+          <button onClick={() => scrollToSection('servicos')} className="text-xl text-foreground hover:text-primary transition-colors">Serviços</button>
+          <button onClick={() => scrollToSection('faq')} className="text-xl text-foreground hover:text-primary transition-colors">FAQ</button>
         </div>
       )}
     </header>
   )
 }
+
