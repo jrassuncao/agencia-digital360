@@ -42,7 +42,7 @@ export function Header() {
   return (
     <header className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled || isMobileMenuOpen ? "bg-background/95 backdrop-blur-lg border-b border-border/50" : "bg-transparent"
+      isScrolled || isMobileMenuOpen ? "bg-background/10 backdrop-blur-lg border-b border-border/50" : "bg-transparent"
     )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -66,7 +66,8 @@ export function Header() {
           </div>
 
           <div className="flex-1 flex justify-end">
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 text-foreground">
+            {/* ✅ Cor do ícone do menu alterada para azul */}
+            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 text-primary">
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -76,12 +77,11 @@ export function Header() {
 
       {/* Menu Mobile de Ecrã Inteiro */}
       {isMobileMenuOpen && (
-        // ✅ Espaçamento vertical diminuído de 'space-y-8' para 'space-y-6'
         <div className="md:hidden fixed inset-0 top-16 bg-background z-40 flex flex-col items-center justify-center space-y-6">
-          {/* ✅ Tamanho da fonte diminuído de 'text-xl' para 'text-lg' */}
-          <button onClick={() => scrollToSection('sobre')} className="text-lg text-foreground hover:text-primary transition-colors">Sobre</button>
-          <button onClick={() => scrollToSection('servicos')} className="text-lg text-foreground hover:text-primary transition-colors">Serviços</button>
-          <button onClick={() => scrollToSection('faq')} className="text-lg text-foreground hover:text-primary transition-colors">FAQ</button>
+          {/* ✅ Cor da fonte dos links alterada para azul */}
+          <button onClick={() => scrollToSection('sobre')} className="text-lg text-primary hover:text-primary/80 transition-colors">Sobre</button>
+          <button onClick={() => scrollToSection('servicos')} className="text-lg text-primary hover:text-primary/80 transition-colors">Serviços</button>
+          <button onClick={() => scrollToSection('faq')} className="text-lg text-primary hover:text-primary/80 transition-colors">FAQ</button>
         </div>
       )}
     </header>
