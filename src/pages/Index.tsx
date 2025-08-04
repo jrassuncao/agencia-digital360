@@ -6,7 +6,7 @@ import { HeroSection } from "@/components/landing/hero-section";
 import { AboutSection } from "@/components/landing/about-section";
 import { ServicesSection } from "@/components/landing/services-section";
 import { FAQSection } from "@/components/landing/faq-section";
-import { CTASection } from "@/components/landing/cta-section";
+/*import { CTASection } from "@/components/landing/cta-section";*/
 import { Footer } from "@/components/landing/footer";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { ContactSection } from "@/components/landing/ContactSection";
@@ -40,7 +40,6 @@ const Index = () => {
           <RoadmapSection />
           <SectionDivider />
           <FAQSection />
-          <CTASection />
           <ContactSection />
           
         </main>
