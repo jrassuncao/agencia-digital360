@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { RoadmapSection } from "@/components/landing/RoadmapSection";
 import { Header } from "@/components/landing/header";
@@ -9,15 +10,27 @@ import { CTASection } from "@/components/landing/cta-section";
 import { Footer } from "@/components/landing/footer";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { ContactSection } from "@/components/landing/ContactSection";
+import { Preloader } from "@/components/ui/Preloader"; // ✅ 1. Importamos o Preloader
 
 const Index = () => {
+  // ✅ 2. Lógica para controlar o estado de carregamento
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simula um tempo de carregamento de 2.5 segundos
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    // Usamos um React Fragment <> para não adicionar divs desnecessários
     <>
-      <Header />
-      {/* ✅ Este 'div' agora contém todo o conteúdo que rola,
-          resolvendo o problema do scroll horizontal sem afetar o Header. */}
-      <div className="overflow-x-hidden">
+      <Preloader isLoading={isLoading} />
+      {/* O conteúdo do site só aparece quando o carregamento termina */}
+      <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+        <Header />
         <main>
           <HeroSection />
           <AboutSection />
@@ -29,8 +42,8 @@ const Index = () => {
           <CTASection />
         </main>
         <Footer />
+        <WhatsAppButton />
       </div>
-      <WhatsAppButton />
     </>
   );
 };
