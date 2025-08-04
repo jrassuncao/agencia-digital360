@@ -2,18 +2,17 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import logoAgencia from "@/assets/logo-360.png";
-import { Menu, X } from "lucide-react"; // ✅ Importamos os ícones de menu
+import { Menu, X } from "lucide-react";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // ✅ Estado para o menu mobile
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
 
-    // Impede o scroll da página quando o menu mobile está aberto
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -23,7 +22,7 @@ export function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.body.style.overflow = 'auto'; // Garante que o scroll volta ao normal
+      document.body.style.overflow = 'auto';
     }
   }, [isMobileMenuOpen])
 
@@ -32,12 +31,12 @@ export function Header() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
-    setIsMobileMenuOpen(false); // Fecha o menu mobile após clicar num link
+    setIsMobileMenuOpen(false);
   }
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setIsMobileMenuOpen(false); // Fecha o menu mobile após clicar na logo
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -48,7 +47,6 @@ export function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* Coluna da Esquerda (Logo) */}
           <div className="flex-1 flex justify-start">
             <button onClick={scrollToTop} className="flex items-center focus:outline-none">
               <img
@@ -59,7 +57,6 @@ export function Header() {
             </button>
           </div>
 
-          {/* Coluna do Centro (Navegação Desktop) */}
           <div className="flex-1 flex justify-center">
             <nav className="hidden md:flex items-center gap-8">
               <button onClick={() => scrollToSection('sobre')} className="text-muted-foreground hover:text-primary transition-colors">Sobre</button>
@@ -68,7 +65,6 @@ export function Header() {
             </nav>
           </div>
 
-          {/* Coluna da Direita (Botão Hambúrguer para Mobile) */}
           <div className="flex-1 flex justify-end">
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 text-foreground">
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -78,16 +74,16 @@ export function Header() {
         </div>
       </div>
 
-      {/* ✅ Menu Mobile de Ecrã Inteiro */}
+      {/* Menu Mobile de Ecrã Inteiro */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-16 bg-background z-40 flex flex-col items-center justify-center space-y-8">
-          {/* ✅ Tamanho da fonte diminuído de 'text-2xl' para 'text-xl' */}
-          <button onClick={() => scrollToSection('sobre')} className="text-xl text-foreground hover:text-primary transition-colors">Sobre</button>
-          <button onClick={() => scrollToSection('servicos')} className="text-xl text-foreground hover:text-primary transition-colors">Serviços</button>
-          <button onClick={() => scrollToSection('faq')} className="text-xl text-foreground hover:text-primary transition-colors">FAQ</button>
+        // ✅ Espaçamento vertical diminuído de 'space-y-8' para 'space-y-6'
+        <div className="md:hidden fixed inset-0 top-16 bg-background z-40 flex flex-col items-center justify-center space-y-6">
+          {/* ✅ Tamanho da fonte diminuído de 'text-xl' para 'text-lg' */}
+          <button onClick={() => scrollToSection('sobre')} className="text-lg text-foreground hover:text-primary transition-colors">Sobre</button>
+          <button onClick={() => scrollToSection('servicos')} className="text-lg text-foreground hover:text-primary transition-colors">Serviços</button>
+          <button onClick={() => scrollToSection('faq')} className="text-lg text-foreground hover:text-primary transition-colors">FAQ</button>
         </div>
       )}
     </header>
   )
 }
-
