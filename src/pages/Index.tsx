@@ -40,8 +40,9 @@ const Index = () => {
           <RoadmapSection />
           <SectionDivider />
           <FAQSection />
-          <ContactSection />
           <CTASection />
+          <ContactSection />
+          
         </main>
         <Footer />
       </div>
