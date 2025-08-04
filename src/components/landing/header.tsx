@@ -66,7 +66,6 @@ export function Header() {
           </div>
 
           <div className="flex-1 flex justify-end">
-            {/* ✅ Cor do ícone do menu alterada para púrpura */}
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 text-accent">
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -78,12 +77,13 @@ export function Header() {
       {/* Menu Mobile de Ecrã Inteiro */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 top-16 bg-background z-40 flex flex-col items-center justify-center space-y-6">
-          {/* ✅ Cor da fonte dos links alterada para púrpura */}
-          <button onClick={() => scrollToSection('sobre')} className="text-lg text-accent hover:text-accent/80 transition-colors">Sobre</button>
-          <button onClick={() => scrollToSection('servicos')} className="text-lg text-accent hover:text-accent/80 transition-colors">Serviços</button>
-          <button onClick={() => scrollToSection('faq')} className="text-lg text-accent hover:text-accent/80 transition-colors">FAQ</button>
+          {/* ✅ Efeito 'bold' adicionado à fonte */}
+          <button onClick={() => scrollToSection('sobre')} className="text-lg font-bold text-accent hover:text-accent/80 transition-colors">Sobre</button>
+          <button onClick={() => scrollToSection('servicos')} className="text-lg font-bold text-accent hover:text-accent/80 transition-colors">Serviços</button>
+          <button onClick={() => scrollToSection('faq')} className="text-lg font-bold text-accent hover:text-accent/80 transition-colors">FAQ</button>
         </div>
       )}
     </header>
   )
 }
+
