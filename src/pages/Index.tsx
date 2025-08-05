@@ -37,10 +37,13 @@ const Index = () => {
         <main>
           <HeroSection />
           <AboutSection />
+          <SectionDivider />
           <ServicesSection />
+          <SectionDivider />
           <RoadmapSection />
           <SectionDivider />
           <BonusSection />
+          <SectionDivider />
           <FAQSection />
           <ContactSection />
           

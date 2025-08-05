@@ -1,6 +1,6 @@
 import { Section } from "@/components/ui/section";
 
-// ✅ 1. Importe as suas imagens aqui
+// Importe as suas imagens aqui
 import suporteImage from "@/assets/suporte.jpg";
 import performanceImage from "@/assets/performance.jpg";
 import treinamentoImage from "@/assets/treinamento.jpg";
@@ -35,30 +35,35 @@ const bonusItems = [
 
 export function BonusSection() {
   return (
-    <Section id="bonus">
-      <div className="text-center space-y-6 mb-24">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-          <span className="gradient-text">Sua Plataforma Digital, Elevada ao Máximo Potencial.</span>
-        </h2>
-      </div>
-      
-      <div className="relative bonus-timeline">
-        {/* ✅ AJUSTE DE SINTAXE APLICADO AQUI */}
-        {/* Removemos o parêntese extra depois de '=>' */}
-        {bonusItems.map((item, index) => (
-          <div key={index} className="bonus-item-wrapper">
-            <div className="bonus-item-content">
-              <div className="bonus-text-content" style={{ textAlign: 'left' }}>
-                <p className="bonus-subtitle">{item.subtitle}</p>
-                <h3 className="bonus-title">{item.title}</h3>
-                <p className="bonus-description">{item.description}</p>
-              </div>
-              <div className="bonus-image-wrapper animated-frame-wrapper">
-                <img src={item.image} alt={item.title} className="bonus-image" />
+    // Adicionamos classes para o posicionamento do fundo.
+    <Section id="bonus" className="relative overflow-hidden">
+      {/* Elemento do fundo de nebulosa */}
+      <div className="nebula-background"></div>
+
+      {/* Conteúdo principal da seção */}
+      <div className="relative z-10">
+        <div className="text-center space-y-6 mb-24">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+            <span className="gradient-text">Sua Plataforma Digital, Elevada ao Máximo Potencial.</span>
+          </h2>
+        </div>
+        
+        <div className="relative bonus-timeline">
+          {bonusItems.map((item, index) => (
+            <div key={index} className="bonus-item-wrapper">
+              <div className="bonus-item-content">
+                <div className="bonus-text-content" style={{ textAlign: 'left' }}>
+                  <p className="bonus-subtitle">{item.subtitle}</p>
+                  <h3 className="bonus-title">{item.title}</h3>
+                  <p className="bonus-description">{item.description}</p>
+                </div>
+                <div className="bonus-image-wrapper animated-frame-wrapper">
+                  <img src={item.image} alt={item.title} className="bonus-image" />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Section>
   );
