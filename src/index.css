@@ -522,3 +522,48 @@
     text-align: left;
   }
 }
+/* --- Estilos para a Moldura Animada --- */
+
+/* 1. Prepara o container da imagem para a animação. */
+.animated-frame-wrapper {
+  position: relative;
+  padding: 2px; /* Espaço para a moldura aparecer */
+  border-radius: 17px; /* Um pouco maior que o raio da imagem */
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* 2. Cria a moldura com o gradiente. */
+.animated-frame-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #00D1FF, #A020F0, #00D1FF);
+  background-size: 250% 250%;
+  /* ✅ AJUSTE APLICADO AQUI: A animação agora é mais rápida (3s) */
+  animation: gradient-pulse 3s linear infinite;
+  z-index: -1;
+}
+
+/* 3. Define a animação que move o gradiente. */
+@keyframes gradient-pulse {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Garante que a imagem se encaixe perfeitamente dentro da moldura. */
+.animated-frame-wrapper .bonus-image {
+  border-radius: 15px; /* Raio original da imagem */
+  display: block; /* Remove espaços extras */
+}
+
