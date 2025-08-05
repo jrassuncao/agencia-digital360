@@ -37,7 +37,6 @@ const Index = () => {
         <main>
           <HeroSection />
           <AboutSection />
-          <SectionDivider />
           <ServicesSection />
           <SectionDivider />
           <RoadmapSection />
