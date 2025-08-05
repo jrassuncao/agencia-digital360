@@ -1,7 +1,16 @@
-import { Section } from "@/components/ui/section";
+import React from 'react';
 import { Button } from "@/components/ui/button";
-import contactImage from "@/assets/iniciar-contato.jpg"; // Importa a sua imagem
+import contactImage from "@/assets/iniciar-contato.jpg";
 import { Mail, Phone } from "lucide-react";
+
+const Section = ({ id, className, container = true, children }) => {
+  const containerClass = container ? 'container mx-auto' : '';
+  return (
+    <section id={id} className={`${className} ${containerClass}`}>
+      {children}
+    </section>
+  );
+};
 
 export function ContactSection() {
   const handleWhatsAppClick = () => {
@@ -21,50 +30,48 @@ export function ContactSection() {
         <div className="absolute inset-0 bg-black/10" />
       </div>
       
-      {/* Bloco de contato (classes de borda removidas) */}
-      <div className="bg-background">
+      {/* BLOCO DE CONTATO COM FUNDO PRETO */}
+      <div className="bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             {/* Texto da esquerda */}
             <div className="space-y-4">
-              <h2 className="text-5xl sm:text-6xl font-bold leading-tight">
+              <h2 className="text-5xl sm:text-6xl font-bold leading-tight text-white">
                 Pronto para a decolagem digital?
               </h2>
-
-              <br /><br />
-
-              <p className="text-xl text-muted-foreground">
+              <div className="h-8" />
+              <p className="text-xl text-gray-300">
                 Fale com um especialista e receba o plano de voo personalizado
                 para o seu sucesso.
               </p>
             </div>
-
-            {/* Coluna da direita – deslocada muito à DIREITA */}
+            
+            {/* Coluna da direita */}
             <div className="space-y-6 md:ml-auto md:pl-16">
-              <br /><br /><br /><br />
-
+              <div className="h-16" />
+              
               {/* Email */}
               <div className="flex items-center gap-4">
-                <Mail className="w-6 h-6 text-primary" />
+                <Mail className="w-6 h-6 text-primary" /> {/* Ícone com cor original */}
                 <div>
-                  <h4 className="font-semibold">Email</h4>
+                  <h4 className="font-semibold text-white">Email</h4>
                   <a
                     href="mailto:contato@agencia360.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors"
                   >
                     contato@agencia360.com
                   </a>
                 </div>
               </div>
-
+              
               {/* Telefone */}
               <div className="flex items-center gap-4">
-                <Phone className="w-6 h-6 text-primary" />
+                <Phone className="w-6 h-6 text-primary" /> {/* Ícone com cor original */}
                 <div>
-                  <h4 className="font-semibold">Telefone</h4>
+                  <h4 className="font-semibold text-white">Telefone</h4>
                   <a
                     href="tel:+5521965611980"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    className="text-gray-300 hover:text-white transition-colors"
                   >
                     +55 21 96561-1980
                   </a>

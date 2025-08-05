@@ -11,6 +11,7 @@ import { Footer } from "@/components/landing/footer";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { ContactSection } from "@/components/landing/ContactSection";
 import { Preloader } from "@/components/ui/Preloader"; // ✅ 1. Importamos o Preloader
+import { BonusSection } from "@/components/landing/BonusSection";
 
 const Index = () => {
   // ✅ 2. Lógica para controlar o estado de carregamento
@@ -39,6 +40,7 @@ const Index = () => {
           <ServicesSection />
           <RoadmapSection />
           <SectionDivider />
+          <BonusSection />
           <FAQSection />
           <ContactSection />
           

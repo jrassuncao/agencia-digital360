@@ -432,3 +432,93 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(-360deg); }
 }
+/* ============================================== */
+/* Estilos para a Secção de Bónus (Zig-Zag)     */
+/* ============================================== */
+
+.bonus-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, hsl(var(--primary)), transparent);
+  opacity: 0.3;
+}
+
+.bonus-item-wrapper {
+  position: relative;
+  padding: 3rem 0;
+}
+
+.bonus-item-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+}
+
+.bonus-item-wrapper:nth-child(odd) .bonus-text-content {
+  text-align: right;
+}
+
+.bonus-item-wrapper:nth-child(even) .bonus-image-wrapper {
+  order: -1;
+}
+
+.bonus-image-wrapper {
+  position: relative;
+  box-shadow: var(--shadow-card);
+  border-radius: 0.75rem;
+  transition: var(--transition-smooth);
+}
+
+.bonus-image-wrapper:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.25);
+}
+
+.bonus-image {
+  width: 100%;
+  border-radius: 0.75rem;
+  display: block;
+}
+
+.bonus-subtitle {
+  font-weight: 700;
+  color: hsl(var(--primary));
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.bonus-title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.bonus-description {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Responsividade para telemóveis */
+@media (max-width: 768px) {
+  .bonus-timeline::before {
+    left: 1rem;
+  }
+  .bonus-item-content {
+    grid-template-columns: 1fr;
+    padding-left: 3rem;
+  }
+  .bonus-item-wrapper:nth-child(even) .bonus-image-wrapper,
+  .bonus-item-wrapper:nth-child(odd) .bonus-text-content {
+    order: 0;
+    text-align: left;
+  }
+}
