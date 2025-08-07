@@ -120,7 +120,7 @@ export function ServicesSection() {
 
   // ✅ 1. Definimos os estilos da animação aqui, com os mesmos parâmetros da AboutSection
   const textAnimationStyle = {
-    transition: 'transform 4s cubic-bezier(0.25, 1, 0.5, 1), opacity 2.5s ease-out',
+    transition: 'transform 2s cubic-bezier(0.25, 1, 0.5, 1), opacity 2.5s ease-out',
     transform: isVisible ? 'translateY(0)' : 'translateY(100px)',
     opacity: isVisible ? 1 : 0,
   };
