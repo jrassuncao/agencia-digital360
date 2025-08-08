@@ -68,9 +68,7 @@
     --border: 220 13% 91%;
     --input: 220 13% 91%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
@@ -598,4 +596,3 @@
   position: relative;
   z-index: 10;
 }
-
