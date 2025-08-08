@@ -11,7 +11,7 @@ import { SectionDivider } from "@/components/ui/SectionDivider";
 import { ContactSection } from "@/components/landing/ContactSection";
 import { Preloader } from "@/components/ui/Preloader";
 import { BonusSection } from "@/components/landing/BonusSection";
-import TargetAudienceSection from "@/components/landing/TargetAudienceSection";
+/*import TargetAudienceSection from "@/components/landing/TargetAudienceSection";*/
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +28,8 @@ const Index = () => {
     <>
       <Preloader isLoading={isLoading} />
       
-      <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      {/* ✅ CORREÇÃO DEFINITIVA APLICADA AQUI ✅ */}
+      <div className={`relative transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Header />
         <main>
           <HeroSection />
@@ -36,7 +37,8 @@ const Index = () => {
           <ServicesSection />
           <SectionDivider />
           <BonusSection />
-          <TargetAudienceSection />
+          
+          
           <RoadmapSection />
           <SectionDivider />
           <FAQSection />
@@ -49,5 +51,4 @@ const Index = () => {
   );
 };
 
-// ✅ Apenas uma linha de export, como deve ser.
 export default Index;

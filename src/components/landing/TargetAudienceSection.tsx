@@ -1,4 +1,3 @@
-// src/components/landing/TargetAudienceSection.tsx
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import ConstellationBackground from "../effects/ConstellationBackground";
@@ -36,20 +35,19 @@ const TargetAudienceSection: React.FC = () => {
   const decoderProgress = useTransform(scrollYProgress, [0.3, 0.8], [0, 100]);
 
   return (
-    // ✅ CORREÇÃO: A classe "overflow-hidden" foi REMOVIDA daqui
     <section ref={targetRef} className="relative h-[300vh] bg-background text-foreground">
       <ConstellationBackground scrollYProgress={scrollYProgress} />
 
       <motion.div
         style={{ opacity, scale, position }}
-        className="top-0 flex h-screen w-full flex-col items-center justify-center px-4 relative z-10"
+        className="top-0 flex h-screen w-full flex-col items-center justify-center px-4 z-10"
       >
         <div className="text-center">
           <p className="mb-4 text-2xl font-light text-muted-foreground md:text-3xl">
             Para quem quer simplificar o digital e ver resultado.
           </p>
           <h2 className="mb-8 text-4xl font-bold md:text-6xl gradient-text">
-            Para quem são os serviços 360?
+            PARA QUEM É A AGÊNCIA 360?
           </h2>
         </div>
 
@@ -60,7 +58,6 @@ const TargetAudienceSection: React.FC = () => {
             const itemProgress = useTransform(decoderProgress, [start * 100, end * 100], [0, 100]);
 
             return (
-              // ✅ MELHORIA: Adicionado backdrop-blur-sm para legibilidade
               <div key={index} className="relative overflow-hidden rounded-lg border border-border bg-card/50 p-6 backdrop-blur-sm">
                 <motion.div
                   style={{ width: useTransform(itemProgress, [0, 100], ["0%", "100%"]) }}

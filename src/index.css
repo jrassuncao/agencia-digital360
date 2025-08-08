@@ -68,15 +68,17 @@
     --border: 220 13% 91%;
     --input: 220 13% 91%;
   }
+}
 
+@layer base {
   * {
     @apply border-border;
   }
 
+  /* ✅ 'overflow-x: hidden' foi REMOVIDO daqui para corrigir a animação */
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    overflow-x: hidden;
   }
   
   html {
@@ -595,4 +597,21 @@
 .bonus-section .relative.z-10 {
   position: relative;
   z-index: 10;
+}
+
+/* ============================================== */
+/* Estilos para a Secção "Descodificador"       */
+/* ============================================== */
+
+.decoder-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: hsl(var(--primary));
+  box-shadow: var(--glow-primary);
+}
+
+.glitch-text {
+  font-family: monospace;
 }
