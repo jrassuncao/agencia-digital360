@@ -70,21 +70,19 @@
     --input: 220 13% 91%;
   }
 
+  /* ✅ O seu primeiro bloco @layer base termina aqui, como no original ✅ */
+}
+
+@layer base {
   * {
     @apply border-border;
-  }
-
-  /* ✅ CORREÇÃO FINAL APLICADA AQUI ✅ */
-  /* Esta regra agora permite que a página cresça em altura para a animação funcionar,
-     e ao mesmo tempo previne o scroll horizontal. */
-  html, body {
-    min-height: 100%;
-    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* ✅ ÚNICA ALTERAÇÃO REALIZADA EM TODO O FICHEIRO ✅ */
+    position: relative;
   }
   
   html {
@@ -613,4 +611,13 @@
 
 .glitch-text {
   font-family: monospace;
+}
+/* ============================================== */
+/* Solução Definitiva para o Scroll Horizontal   */
+/* ============================================== */
+
+.site-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }

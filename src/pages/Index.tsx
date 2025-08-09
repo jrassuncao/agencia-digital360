@@ -1,3 +1,4 @@
+// src/pages/Index.tsx
 import { useState, useEffect } from "react";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { RoadmapSection } from "@/components/landing/RoadmapSection";
@@ -28,8 +29,8 @@ const Index = () => {
     <>
       <Preloader isLoading={isLoading} />
       
-      {/* ✅ GARANTIA DO CONTEXTO DE POSIÇÃO ✅ */}
-      <div className={`relative transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      {/* Este 'div' NÃO é o principal, ele está dentro do 'site-wrapper' do App.tsx */}
+      <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Header />
         <main>
           <HeroSection />
