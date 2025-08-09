@@ -1,6 +1,7 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import React, { useRef } from "react";
-import ConstellationBackground from "../effects/ConstellationBackground";
+// src/components/landing/TargetAudienceSection.tsx
+import { motion } from "framer-motion";
+import React from "react";
+import PlexusBackground from "../effects/PlexusBackground"; 
 
 const contentData = [
   {
@@ -21,57 +22,61 @@ const contentData = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  },
+};
+
 const TargetAudienceSection: React.FC = () => {
-  const targetRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0.1, 0.3, 0.8, 1], [0, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0.1, 0.4], [0.8, 1]);
-  const position = useTransform(scrollYProgress, (pos) => (pos >= 0.2 && pos <= 0.8 ? "sticky" : "relative"));
-
-  const decoderProgress = useTransform(scrollYProgress, [0.3, 0.8], [0, 100]);
-
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-background text-foreground">
-      <ConstellationBackground scrollYProgress={scrollYProgress} />
-
+    <section className="relative bg-background py-20 px-4 text-foreground">
+      <PlexusBackground />
+      
       <motion.div
-        style={{ opacity, scale, position }}
-        className="top-0 flex h-screen w-full flex-col items-center justify-center px-4 z-10"
+        className="relative z-10 mx-auto max-w-3xl"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={containerVariants}
       >
-        <div className="text-center">
+        <motion.div variants={itemVariants} className="text-center mb-12">
           <p className="mb-4 text-2xl font-light text-muted-foreground md:text-3xl">
             Para quem quer simplificar o digital e ver resultado.
           </p>
           <h2 className="mb-8 text-4xl font-bold md:text-6xl gradient-text">
             PARA QUEM É A AGÊNCIA 360?
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="w-full max-w-3xl space-y-8">
-          {contentData.map((item, index) => {
-            const start = index / contentData.length;
-            const end = (index + 1) / contentData.length;
-            const itemProgress = useTransform(decoderProgress, [start * 100, end * 100], [0, 100]);
-
-            return (
-              <div key={index} className="relative overflow-hidden rounded-lg border border-border bg-card/50 p-6 backdrop-blur-sm">
-                <motion.div
-                  style={{ width: useTransform(itemProgress, [0, 100], ["0%", "100%"]) }}
-                  className="absolute left-0 top-0 h-full bg-primary/20"
-                />
-                <h3 className="mb-2 text-xl font-semibold text-primary">{item.title}</h3>
-                <p className="text-lg text-muted-foreground">{item.description}</p>
-              </div>
-            );
-          })}
+        <div className="space-y-8">
+          {contentData.map((item, index) => (
+            <motion.div
+              key={index}
+              className="relative overflow-hidden rounded-lg border border-border bg-card/50 p-6 backdrop-blur-sm"
+              variants={itemVariants}
+            >
+              <h3 className="mb-2 text-xl font-semibold text-primary">{item.title}</h3>
+              <p className="text-lg text-muted-foreground">{item.description}</p>
+            </motion.div>
+          ))}
         </div>
-        <p className="mt-8 text-xl font-light text-muted-foreground">
+        
+        <motion.p variants={itemVariants} className="mt-12 text-center text-xl font-light text-muted-foreground">
           Deixe a parte difícil com a gente. Você foca no que ama.
-        </p>
+        </motion.p>
       </motion.div>
     </section>
   );
