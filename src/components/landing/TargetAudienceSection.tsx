@@ -1,7 +1,7 @@
 // src/components/landing/TargetAudienceSection.tsx
 import { motion } from "framer-motion";
-import React from "react";
-import PlexusBackground from "../effects/PlexusBackground"; 
+// ✅ 1. Imports adicionados para o efeito de estrelas
+import React, { useState, useEffect } from "react";
 
 const contentData = [
   {
@@ -40,11 +40,58 @@ const itemVariants = {
   },
 };
 
+// ✅ 2. Interface para definir a estrutura de cada estrela
+interface Star {
+  id: number;
+  size: number;
+  duration: number;
+  delay: number;
+  left: string;
+  top: string;
+}
+
 const TargetAudienceSection: React.FC = () => {
+  // ✅ 3. Lógica para criar e armazenar as estrelas
+  const [stars, setStars] = useState<Star[]>([]);
+
+  useEffect(() => {
+    const generatedStars: Star[] = [];
+    const starCount = 50; // Mesmo número de estrelas da sua outra seção
+    for (let i = 0; i < starCount; i++) {
+      generatedStars.push({
+        id: i,
+        size: Math.random() * 2 + 1,
+        duration: 5 + Math.random() * 10,
+        delay: Math.random() * 15,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+      });
+    }
+    setStars(generatedStars);
+  }, []);
+
   return (
-    <section className="relative bg-background py-20 px-4 text-foreground">
-      <PlexusBackground />
+    // ✅ 4. As classes 'relative' e 'overflow-hidden' são cruciais para conter o fundo
+    <section className="relative overflow-hidden bg-background py-20 px-4 text-foreground">
       
+      {/* ✅ 5. JSX para renderizar o fundo de estrelas */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {stars.map((star) => (
+          <div
+            key={star.id}
+            className="star" // A classe 'star' vem do seu index.css
+            style={{
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              left: star.left,
+              top: star.top,
+              animationDuration: `${star.duration}s`,
+              animationDelay: `${star.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
       <motion.div
         className="relative z-10 mx-auto max-w-3xl"
         initial="hidden"
@@ -57,7 +104,7 @@ const TargetAudienceSection: React.FC = () => {
             Para quem quer simplificar o digital e ver resultado.
           </p>
           <h2 className="mb-8 text-4xl font-bold md:text-6xl gradient-text">
-            PARA QUEM É A AGÊNCIA 360?
+            Para quem são nossos serviços?
           </h2>
         </motion.div>
 

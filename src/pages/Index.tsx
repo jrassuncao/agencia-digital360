@@ -38,6 +38,7 @@ const Index = () => {
           <SectionDivider />
           <BonusSection />
           <TargetAudienceSection />
+          <SectionDivider />
           <RoadmapSection />
           <SectionDivider />
           <FAQSection />
