@@ -1,6 +1,5 @@
 // src/components/landing/TargetAudienceSection.tsx
 import { motion } from "framer-motion";
-// ✅ 1. Imports adicionados para o efeito de estrelas
 import React, { useState, useEffect } from "react";
 
 const contentData = [
@@ -40,7 +39,6 @@ const itemVariants = {
   },
 };
 
-// ✅ 2. Interface para definir a estrutura de cada estrela
 interface Star {
   id: number;
   size: number;
@@ -51,12 +49,11 @@ interface Star {
 }
 
 const TargetAudienceSection: React.FC = () => {
-  // ✅ 3. Lógica para criar e armazenar as estrelas
   const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
     const generatedStars: Star[] = [];
-    const starCount = 50; // Mesmo número de estrelas da sua outra seção
+    const starCount = 50;
     for (let i = 0; i < starCount; i++) {
       generatedStars.push({
         id: i,
@@ -71,15 +68,13 @@ const TargetAudienceSection: React.FC = () => {
   }, []);
 
   return (
-    // ✅ 4. As classes 'relative' e 'overflow-hidden' são cruciais para conter o fundo
     <section className="relative overflow-hidden bg-background py-20 px-4 text-foreground">
       
-      {/* ✅ 5. JSX para renderizar o fundo de estrelas */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {stars.map((star) => (
           <div
             key={star.id}
-            className="star" // A classe 'star' vem do seu index.css
+            className="star"
             style={{
               width: `${star.size}px`,
               height: `${star.size}px`,
@@ -103,7 +98,8 @@ const TargetAudienceSection: React.FC = () => {
           <p className="mb-4 text-2xl font-light text-muted-foreground md:text-3xl">
             Para quem quer simplificar o digital e ver resultado.
           </p>
-          <h2 className="mb-8 text-4xl font-bold md:text-6xl gradient-text">
+          {/* ✅ AJUSTE: Tamanho da fonte diminuído aqui */}
+          <h2 className="mb-8 text-3xl font-bold md:text-5xl gradient-text">
             Para quem são nossos serviços?
           </h2>
         </motion.div>
