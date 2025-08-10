@@ -71,7 +71,6 @@ export const PainPointsSection: React.FC = () => {
 
   // Função para iniciar o slideshow
   const startSlideshow = () => {
-    // Para qualquer slideshow anterior para evitar múltiplos intervalos
     if (intervalRef.current) clearInterval(intervalRef.current);
     
     intervalRef.current = setInterval(() => {
@@ -80,7 +79,7 @@ export const PainPointsSection: React.FC = () => {
         const nextIndex = (currentIndex + 1) % painPoints.length;
         return painPoints[nextIndex];
       });
-    }, 2000); // Muda a cada 2 segundos
+    }, 2000);
   };
 
   // Função para parar o slideshow
@@ -90,10 +89,8 @@ export const PainPointsSection: React.FC = () => {
     }
   };
 
-  // Inicia o slideshow quando o componente é montado
   useEffect(() => {
     startSlideshow();
-    // Limpa o intervalo quando o componente é desmontado
     return () => stopSlideshow();
   }, []);
 
@@ -104,8 +101,8 @@ export const PainPointsSection: React.FC = () => {
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div 
           className="mx-auto max-w-5xl lg:grid lg:grid-cols-[auto_1fr] lg:gap-x-8 items-start"
-          onMouseEnter={stopSlideshow} // Pausa o slideshow ao entrar com o rato
-          onMouseLeave={startSlideshow} // Recomeça o slideshow ao sair com o rato
+          onMouseEnter={stopSlideshow}
+          onMouseLeave={startSlideshow}
         >
           <motion.div 
             className="text-center lg:text-left lg:col-start-2 mb-16"
@@ -114,12 +111,13 @@ export const PainPointsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl gradient-text whitespace-nowrap pb-2">
+            {/* ✅ CORREÇÃO APLICADA AQUI: 'whitespace-nowrap' agora é 'lg:whitespace-nowrap' */}
+            <h2 className="text-4xl font-bold tracking-tight sm:text-5xl gradient-text lg:whitespace-nowrap pb-2">
               Está navegando por algum destes desafios?
             </h2>
           </motion.div>
 
-          {/* Painel de Controlo (Ícones) - Coluna 1, Linha 2 em LG */}
+          {/* Painel de Controlo (Ícones) */}
           <div className="flex flex-row lg:flex-col justify-center gap-4 mx-auto lg:mx-0 lg:row-start-2">
             {painPoints.map((point) => (
               <motion.button
@@ -145,9 +143,8 @@ export const PainPointsSection: React.FC = () => {
             ))}
           </div>
 
-          {/* Painel e CTA - Coluna 2, Linha 2 em LG */}
+          {/* Painel e CTA */}
           <div className="flex flex-1 flex-col gap-8 mt-8 lg:mt-0 lg:row-start-2">
-            {/* Painel Holográfico de Exibição */}
             <div className="relative flex-1 p-8 rounded-lg bg-card/30 backdrop-blur-sm border border-border overflow-hidden min-h-[350px]">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -167,7 +164,6 @@ export const PainPointsSection: React.FC = () => {
               </AnimatePresence>
             </div>
             
-            {/* Card de CTA */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
