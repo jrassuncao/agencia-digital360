@@ -13,6 +13,8 @@ import { ContactSection } from "@/components/landing/ContactSection";
 import { Preloader } from "@/components/ui/Preloader";
 import { BonusSection } from "@/components/landing/BonusSection";
 import TargetAudienceSection from "@/components/landing/TargetAudienceSection";
+// ✅ 1. Importe a nova secção aqui
+import { PainPointsSection } from "@/components/landing/PainPointsSection";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,13 +31,15 @@ const Index = () => {
     <>
       <Preloader isLoading={isLoading} />
       
-      {/* Este 'div' NÃO é o principal, ele está dentro do 'site-wrapper' do App.tsx */}
-      <div className={`transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`relative transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Header />
         <main>
           <HeroSection />
           <AboutSection />
           <ServicesSection />
+          <SectionDivider />
+          {/* ✅ 2. Adicione a nova secção aqui, antes do divisor */}
+          <PainPointsSection />
           <SectionDivider />
           <BonusSection />
           <TargetAudienceSection />

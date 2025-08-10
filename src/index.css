@@ -621,3 +621,25 @@
   overflow-x: hidden;
   position: relative;
 }
+/* ============================================== */
+/* Estilos para a Secção Campo de Asteroides      */
+/* ============================================== */
+
+@keyframes asteroid-float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(1deg); }
+  50% { transform: translateY(0px) rotate(0deg); }
+  75% { transform: translateY(5px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.asteroid-card {
+  animation: asteroid-float 15s ease-in-out infinite;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.asteroid-card:hover {
+  animation-play-state: paused; /* Para a animação ao passar o rato */
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: var(--glow-primary);
+}
