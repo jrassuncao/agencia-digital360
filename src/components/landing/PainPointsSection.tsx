@@ -111,7 +111,6 @@ export const PainPointsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            {/* ✅ CORREÇÃO APLICADA AQUI: 'whitespace-nowrap' agora é 'lg:whitespace-nowrap' */}
             <h2 className="text-4xl font-bold tracking-tight sm:text-5xl gradient-text lg:whitespace-nowrap pb-2">
               Está navegando por algum destes desafios?
             </h2>
@@ -157,7 +156,8 @@ export const PainPointsSection: React.FC = () => {
                 >
                   <h3 className={cn("text-2xl font-bold mb-4", activePoint.color.text)}>{activePoint.title}</h3>
                   <p className="text-lg text-muted-foreground mb-6">{activePoint.description}</p>
-                  <p className={cn("text-lg text-primary-foreground font-semibold border-t pt-4", activePoint.color.border)}>
+                  {/* ✅ AJUSTE APLICADO AQUI: 'text-foreground' alterado para 'text-muted-foreground' */}
+                  <p className={cn("text-lg text-muted-foreground font-semibold border-t pt-4", activePoint.color.border)}>
                     {activePoint.solution}
                   </p>
                 </motion.div>
